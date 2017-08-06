@@ -6,6 +6,7 @@
 html, body {
   height: 100%;
 }
+
 section {
   position: relative;
   width: 100%;
@@ -32,6 +33,7 @@ section h1 {
   font : normal 300 64px/1 'Josefin Sans', sans-serif;
   text-align: center;
   white-space: nowrap;
+
 }
 #section07 { background: url(images/background.jpg) center center / cover no-repeat;}
 
@@ -56,6 +58,7 @@ section h1 {
   padding-top: 80px;
 }
 #section07 a span {
+	align-self: center;
   position: absolute;
   top: 0;
   left: 50%;
