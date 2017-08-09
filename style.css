@@ -5,6 +5,8 @@
 }
 html, body {
   height: 100%;
+  font-family: Helvetica,Tahoma;
+
 }
 
 section {
@@ -33,6 +35,18 @@ section h1 {
   font : normal 300 64px/1 'Josefin Sans', sans-serif;
   text-align: center;
   white-space: nowrap;
+
+}
+
+#intro {
+  background-color: red;
+  opacity: 1;
+  font-size: 500%;
+  text-align: center;
+}
+#details {
+  border: solid grey;
+  font-size: 100%;
 
 }
 #section07 { background: url(images/background.jpg) center center / cover no-repeat;}
