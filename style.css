@@ -61,6 +61,7 @@ body {
   height: 300px;
   padding: 10px;
 
+
 }
 
 .aos-item__inner {
@@ -74,10 +75,33 @@ body {
   color: #fff;
 
 }
+#header{
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font : normal 300 64px/1 'Josefin Sans', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+.content {
+  margin:0 auto;
+  padding-top: 10%;
+}
+#dp {
+  border-radius: 14px;
 
-
-
-#section07 { background: url(images/background.jpg) center center / cover no-repeat;}
+}
+#section07 {
+  background: url(images/background.jpg) center center / cover no-repeat;
+}
+#section09 {
+  background: url(images/back2.jpg) center center / cover no-repeat;
+  padding-top: 10%;
+}
 .demo a {
   position: absolute;
   bottom: 20px;

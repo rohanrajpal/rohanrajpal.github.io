@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
 	<title>Rohan</title>
-	<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-	<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+	<link href="css/aos.css" rel="stylesheet">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
 
@@ -12,19 +12,43 @@
 <body >
 
 				<section id="section07" class="demo">
-  				<h1 >Hi,I'm Rohan</h1>
+  				<h1>Hi,I'm Rohan</h1>
   					<a href="#transcroller-body" ><span></span><span></span><span></span>Scroll</a>
 				</section>
+		<section id="section08">
 			<div id="transcroller-body" class="aos-all">
 				<div class="aos-item" data-aos="fade-in">
 					<div class="aos-item__inner"><h2>Computer Science Freshman at</h2></div>
 				</div>
 				<div class="aos-item" data-aos="fade-in">
-					<div class="aos-item__inner"><a href="https://www.iiitd.ac.in/"><img src="images/logo.png"></a></div>
+					<div class="aos-item__inner">
+						<div class="content">
+							<a href="https://www.iiitd.ac.in/"><img src="images/logo.png"></a>
+						</div>
+					</div>
 				</div>
-			</div>
+				<div class="aos-item" data-aos="fade-right" >
+					<div class="aos-item__inner" >
 
-	<script src="../dist/aos.js"></script>
+							<img src="images/dp.jpg"  width="280" height="350" id="dp" />
+
+					</div>
+				</div>
+				<div class="aos-item" data-aos="fade-left">
+					<div class="aos-item__inner" >
+						Lorem ipsum dolor sit amet.
+					</div>
+				</div>
+
+			</div>
+		</section>
+			<section id="section09" class="demo">
+				<div data-aos="fade-in" id ="header">
+				 <h3 >Born and brought up in Delhi</h3>
+			 </div>
+			</section>
+
+	<script src="aos-master/dist/aos.js"></script>
 	<script>
 		AOS.init({
 			easing: 'ease-in-out-sine'
