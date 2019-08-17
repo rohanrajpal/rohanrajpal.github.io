@@ -17,8 +17,8 @@ title: Rohan Rajpal
 email: rohan17089@iiitd.ac.in
 description: >- # this means to ignore newlines until "baseurl:"
   A minimal site where I write about my journey in the tech world.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://rohanrajpal.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rr46000
 github_username:  rohanrajpal
 
@@ -41,6 +41,8 @@ disqus:
   shortname: https-rohanrajpal-github-io
 
 google_analytics: UA-145665153-1
+
+show_excerpts: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

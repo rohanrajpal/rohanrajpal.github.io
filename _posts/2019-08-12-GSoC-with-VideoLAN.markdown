@@ -3,6 +3,7 @@ layout: post
 title:  "My GSoC experience with VideoLAN"
 date:   2019-08-12 13:00:00 +0530
 categories: GSoC
+comments: true
 driveId: 1HChkHipXaNVgkkA8ZMF5IMyHLtQv3N20/preview
 ---
 ## Introduction
