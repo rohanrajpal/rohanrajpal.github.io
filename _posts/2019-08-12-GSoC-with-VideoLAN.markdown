@@ -6,8 +6,8 @@ categories: GSoC
 comments: true
 driveId: 1HChkHipXaNVgkkA8ZMF5IMyHLtQv3N20/preview
 ---
-## Introduction
-These summers, I participated as a GSoC student under VideoLAN. Undoubtedly one of the best summer programs out there. From designing interfaces and interactions to writing production-level code, I've learned a ton!
+## Introduction ![videolan](/images/videoLANLogo.png)
+These summers, I participated as a GSoC student under VideoLAN. Undoubtedly one of the best summer programs out there. From designing interfaces and interactions to writing production-level code, I've learned a ton! 
 
 ### Project links
 
@@ -47,9 +47,11 @@ I had made some contributions towards the player controlbar and further wanted t
 
 I have also worked on a few other things
 
- 1. Add all the missing buttons and widgets. I've added the following:
- 	 - Volume Widget
-	 - Teletext Widget
+ 1. Add all the missing buttons and widgets. I've added the following:  
+	 - Volume Widget  
+	 ![volume](/images/volumeDemo.gif)
+	 - Teletext Widget  
+	 ![teletext](/images/teletextPopup.png)
 	 - Aspect Ratio widget
 	 - Record button
 	 - Spacer widget
@@ -104,13 +106,19 @@ We all use drag and drop interfaces quite frequently. Making such interfaces mad
 
 To make an item draggable, you have to set it as a drag target. Similarly, to make it possible to drop a draggable, you need to declare a DropArea.
 
-I also had to add functionalities like move, insert and delete to the model, because Drag and Drop involve all these actions.
+I also had to add functionalities like move, insert and delete to the model, because Drag and Drop involve all these actions.  
+Have a look at some of the actions below:  
+![](/images/DNDDemo.gif)
 
 Next task was to code the cancel and close buttons. The player controlbar should only be updated when the user presses the close button. To implement this, I used signals.  
 
 When you press the close button, the toolbarConfUpdated signal emits, and the playerControlBar is updated.  
 
-[Signals and Slots](https://doc.qt.io/archives/qt-4.8/signalsandslots.html) are used for communication between objects in Qt.  
+[Signals and Slots](https://doc.qt.io/archives/qt-4.8/signalsandslots.html) are used for communication between objects in Qt. Here's the signal sent when toolbar is updated:  
+{% highlight cpp %}
+    if( toolbarEditor->exec() == QDialog::Accepted )
+        emit toolBarConfUpdated();
+{% endhighlight %}
 
 ### Hinting the user
 For the user to easily use the drag and drop interface, we have to provide some hints.  
