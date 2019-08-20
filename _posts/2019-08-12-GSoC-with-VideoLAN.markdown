@@ -7,17 +7,21 @@ comments: true
 driveId: 1HChkHipXaNVgkkA8ZMF5IMyHLtQv3N20/preview
 ---
 ## Introduction ![videolan](/images/videoLANLogo.png)
-These summers, I participated as a GSoC student under VideoLAN. Undoubtedly one of the best summer programs out there. From designing interfaces and interactions to writing production-level code, I've learned a ton! 
+This summer, I participated as a [Google Summer of Code](https://summerofcode.withgoogle.com/) student under VideoLAN. GSoC is undoubtedly one of the best summer programs out there. From designing interfaces and interactions to writing production-level code, I've learned tons of exciting stuff!  
+I was blessed to have great mentors and learned a lot about the open source community.  
 
-### Project links
+### Project and Proposal
 
-Here is the link to the [project page](https://summerofcode.withgoogle.com/projects/#5519642150305792) and my [proposal](https://docs.google.com/document/d/1h6ABFFuIs7gJh4_zwkN23aYkeuDNsn3GkMUPgzeB7OI/edit)
+The VLC media player has an Editor which enables you to customize the player controlbar UI; you can arrange buttons like the play button as per your liking. My main task was to implement this Editor functionality in the new UI for VLC.  
 
-### My work links
+You can have a look at my [project page](https://summerofcode.withgoogle.com/projects/#5519642150305792) on the GSoC website. Feel free to check out my [proposal.](https://docs.google.com/document/d/1h6ABFFuIs7gJh4_zwkN23aYkeuDNsn3GkMUPgzeB7OI/edit)  
 
-Here is the [repository](https://code.videolan.org/rohanrajpal/vlc-qml) I've worked on.
-You can find all the patches I've sent [here.](https://patches.videolan.org/project/vlc-devel/list/?submitter=908&state=*)  
+### Patches
 
+I made an account on [VideoLAN's Gitlab](code.videolan.org) and worked on [this](https://code.videolan.org/rohanrajpal/vlc-qml) repository. I used to push all my commits there to get them reviewed. Then made patches out of them and sent commits to the VLC-developer mailing list.  
+<span style="font-size: 14pt">
+[Here](https://patches.videolan.org/project/vlc-devel/list/?submitter=908&state=*) is a list of all my patches.
+</span>
 ## The Team
 
 A big thanks to the team and my mentors who helped me with my endless doubts!
@@ -77,11 +81,11 @@ I have also worked on a few other things
 Although I completed every task I was assigned, below mentioned tasks are best suited as a follow-up for my work done:
 
  1. If too many widgets come on one side the center buttons don't remain in the center anymore. This has to be fixed.  
- 2. The design of the Teletext and a few other widgets isn't final and work needs to be done.  
+ 2. The design of the Teletext and a few other widgets isn't final and work needs to be done.   
 
 ## Demo  
 Have a look on how the VLC Editor works below:
-{% include googleDrivePlayer.html id=page.driveId %}
+{% include googleDrivePlayer.html id=page.driveId %}  
 
 ## Highlights and Challenges  
 
@@ -116,17 +120,20 @@ When you press the close button, the toolbarConfUpdated signal emits, and the pl
 
 [Signals and Slots](https://doc.qt.io/archives/qt-4.8/signalsandslots.html) are used for communication between objects in Qt. Here's the signal sent when toolbar is updated:  
 {% highlight cpp %}
-    if( toolbarEditor->exec() == QDialog::Accepted )
-        emit toolBarConfUpdated();
+if( toolbarEditor->exec() == QDialog::Accepted )
+    emit toolBarConfUpdated();
 {% endhighlight %}
 
 ### Hinting the user
 For the user to easily use the drag and drop interface, we have to provide some hints.  
 When you hover over a draggable item, the cursor changes to an open hand cursor. If you click and hold over it, the cursor changes to a closed hand cursor.  
+![](/images/cursorShape.jpg)  
 The cursor changes to ForbiddenCursor if you take the draggable to a place where it's not possible to drop.
+
 
 ### Profiles
 Profiles help someone easily save their preferences. For this, I kept the configs of both the player and the mini-player controlbar and split them using a delimiter.
+![](/images/profileDemo.gif)
 
 ### Different parts of the Editor
 One interesting thing about this editor is that it is a mix of QML and Qt/C++. The window, profiles section and action buttons are coded in Qt. The whole drag and drop part is in QML.
