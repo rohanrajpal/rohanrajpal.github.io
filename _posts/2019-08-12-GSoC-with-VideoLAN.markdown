@@ -18,7 +18,8 @@ You can have a look at my [project page](https://summerofcode.withgoogle.com/pro
 
 ### Patches
 
-I made an account on [VideoLAN's Gitlab](code.videolan.org) and worked on [this](https://code.videolan.org/rohanrajpal/vlc-qml) repository. I used to push all my commits there to get them reviewed. Then made patches out of them and sent commits to the VLC-developer mailing list.  
+I made an account on [VideoLAN's Gitlab](code.videolan.org) and worked on [this](https://code.videolan.org/rohanrajpal/vlc-qml) repository. I used to push all my commits there to get them reviewed. Then made patches out of them and sent commits to the VLC-developer mailing list. A few other people would then review the patches. Finally, after making the required changes, the patches would get merged.
+
 <span style="font-size: 14pt">
 [Here](https://patches.videolan.org/project/vlc-devel/list/?submitter=908&state=*) is a list of all my patches.
 </span>
@@ -56,7 +57,8 @@ I have also worked on a few other things
 	 ![volume](/images/volumeDemo.gif)
 	 - Teletext Widget  
 	 ![teletext](/images/teletextPopup.png)
-	 - Aspect Ratio widget
+	 - Aspect Ratio widget  
+	 ![aspect](/images/aspectRatioWidget.png)
 	 - Record button
 	 - Spacer widget
 	 - Extended Spacer widget
@@ -75,6 +77,7 @@ I have also worked on a few other things
 	 - Step backward button
 	 - Quit button
  2. Create a topbar for non editable buttons
+ ![topBar](/images/topBar.png)
 
 ### What's left to do?
 
@@ -92,6 +95,12 @@ Have a look on how the VLC Editor works below:
 ### Make a generic player controlbar  
 
 The first task was to make a model that had all the button and widget data. Then I had to use that model to populate the player ControlBar. Loaders are quite helpful when you have to load a component in QML.
+{% highlight cpp %}
+Loader {
+       id: myLoader
+       source: "MyItem.qml"
+    }
+{% endhighlight %}
 
 After making the buttons model. The next step was to make a QtAbstractListModel to maintain a list of the buttons in current config. This is how the player ControlBar is populated now:  
 - The model would load the config from VLC Core API.
