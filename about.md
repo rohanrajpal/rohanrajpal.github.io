@@ -8,6 +8,21 @@ I'm a third-year student CSE student at [IIITD](https://www.iiitd.ac.in/) and a 
 
 
 Here is my [Resume](https://rohanrajpal.github.io/resume/Rohan_Resume.pdf).
+### Notable Coursework
+
+- Deep Learning (Ongoing)
+- Wearable Applications, Research, Devices,
+Interactions (Ongoing)
+- Machine Learning
+- Computer Networks
+- Designing Human Centered Systems
+- Analysis and Design of Algorithms
+- Database Management System
+- Discrete Maths
+- Operating Systems
+- Data Structures and Algorithms
+- Probability and Statistics
+- Linear Algebra
 
 ### Engineering
 Some of my coursework projects include:
@@ -16,7 +31,8 @@ Some of my coursework projects include:
 - Find patterns in shallow clouds using satellite imagery via deep learning techniques using Pytorch
 - Implementing demand paging in Xv6 in C
 - Implementing priority scheduling in Pintos in C
-- Implement a custom Linux shell using C  
+- Implement a custom Linux shell using C
+- Made a replica of the popular Snake Vs Block using Java and JavaFX
 
 Independent projects:
 - I wrote a recommender system for movies. Implemented user-user and item-item collaborative filtering in Python. Used Flask, Javascript to build the web app and deployed it to Heroku.
