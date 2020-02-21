@@ -29,13 +29,13 @@ Interactions (Ongoing)
 Some of my coursework projects include:
 
 - Implementing the Go-Back-N protocol in Python
-- Simulating a computer network using ns-3 and evaluate its performance in C++
+- [Simulating a computer network](https://github.com/rohanrajpal/ns3_assignments) using ns-3 and evaluate its performance in C++
 - Find patterns in shallow clouds using satellite imagery via deep learning techniques using Pytorch
 - Implementing [demand paging](https://github.com/rohanrajpal/CSE231-OS-Xv6-Assignment) in Xv6 in C
 - Implementing [priority scheduling](https://github.com/rohanrajpal/CSE231-OS-Pintos) in Pintos in C
 - Implement a [custom Linux shell](https://github.com/rohanrajpal/CSE231-OS-Shell-Assignment) using C
 - Implementing a [Merkle tree](https://github.com/rohanrajpal/CSE231-OS-Merkle-Tree) in C
-- Made a replica of the popular Snake Vs Block using Java and JavaFX
+- Made a [replica](https://github.com/rohanrajpal/APGame) of the popular Snake Vs Block using Java and JavaFX
 
 Independent projects:
 
