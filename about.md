@@ -3,6 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
+![dpmain](/images/about/dp.jpg){: .dp}
 
 I'm a third-year student CSE student at [IIITD](https://www.iiitd.ac.in/) and a Google Summer of Code [student](https://summerofcode.withgoogle.com/archive/2019/projects/6144888880496640/) under [VideoLAN](https://www.videolan.org/index.html).
 
