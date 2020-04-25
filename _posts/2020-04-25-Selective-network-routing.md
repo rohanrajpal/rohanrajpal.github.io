@@ -101,6 +101,7 @@ sudo systemctl start openfortivpn
 
 To check if it is running
 ```bash
+rohan@rohan-laptop ~> sudo systemctl status openfortivpn
 ● openfortivpn.service - OpenFortiVPN
    Loaded: loaded (/etc/systemd/system/openfortivpn.service; enabled; vendor preset: enabled)
    Active: active (running) since Sat 2020-04-25 13:22:26 IST; 3h 43min ago
