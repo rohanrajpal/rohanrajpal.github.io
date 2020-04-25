@@ -2,7 +2,7 @@
 layout: post
 title:  "Selective network routing via VPN"
 date:   2020-04-25 13:00:00 +0530
-categories: [Networking, Systemd, VPN, Routing, WorkFromHome]
+categories: [WorkFromHome, VPN, Networking, Selective, Routing, Systemd]
 comments: true
 ---
 
@@ -29,7 +29,7 @@ Save the below config file as vpn-config.conf anywhere on your computer
 
 {% gist b443e20658cdf3e762a4e9df1a6e31bb vpn-config.conf %}
 
-`set-routes = 0` specifies to not make any routes through the VPN, now we will whitelist the websites to use through the VPN. 
+`set-routes = 0` specifies to not make any routes through the VPN, now we will whitelist the websites to use through the VPN.
 
 ### 2. Setup the PPP script
 
@@ -52,7 +52,7 @@ Edit the above script with your favourite editor, it shall look like:
 
 {% gist b443e20658cdf3e762a4e9df1a6e31bb my-pppscript.sh %}
 
-### 3. Run the VPN!
+### 3. Run the VPN
 
 The following command should connect you to your VPN now.
 
@@ -63,7 +63,7 @@ sudo openfortivpn -c vpn-config.conf
 Below you can see the routes added for the ip addresses. ppp0 is the vpn and enp2s0 is the ethernet.
 
 ```bash
-rohan@rohan-laptop ~> route                                                                  (base) 
+rohan@rohan-laptop ~> route                                                                  (base)
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 default         _gateway        0.0.0.0         UG    100    0        0 enp2s0
@@ -100,6 +100,7 @@ sudo systemctl start openfortivpn
 ```
 
 To check if it is running
+
 ```bash
 rohan@rohan-laptop ~> sudo systemctl status openfortivpn
 ● openfortivpn.service - OpenFortiVPN
@@ -119,6 +120,7 @@ Apr 25 13:22:26 rohan-laptop pppd[1852]: Connect: ppp0 <--> /dev/pts/0
 Apr 25 13:22:27 rohan-laptop pppd[1852]: local  IP address 10.212.134.101
 Apr 25 13:22:27 rohan-laptop pppd[1852]: remote IP address 1.1.1.1
 ```
+
 #### References
 
 1. <https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-437783005>
@@ -127,7 +129,6 @@ Apr 25 13:22:27 rohan-laptop pppd[1852]: remote IP address 1.1.1.1
 4. <https://docstore.mik.ua/orelly/networking_2ndEd/tcp/appa_02.htm>
 5. <https://github.com/microsoft/WSL/issues/4201#issuecomment-539034470>
 6. <https://github.com/adrienverge/openfortivpn>
-
 
 [1]: https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-437783005
 [2]: https://github.com/adrienverge/openfortivpn/wiki
