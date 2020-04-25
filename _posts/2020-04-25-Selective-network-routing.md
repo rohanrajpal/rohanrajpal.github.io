@@ -2,119 +2,67 @@
 layout: post
 title:  "Selective network routing via VPN"
 date:   2020-04-25 13:00:00 +0530
-categories: [Networking, Systemd, VPN, Routing]
+categories: [Networking, Systemd, VPN, Routing, WorkFromHome]
 comments: true
 ---
 
-Everyone is working from home and for me it is remotely working on the servers in my college from home. I can only connect to them via VPN, but that slows down the my other browsing experience as well.
-I was trying to figure out a way to route only the traffic of the server through the VPN and not use a VPN for the rest of the traffic. That's when I came to know about selective routing.
+Everyone is working from home and for me it is remotely working on the servers in my college. I can only connect to them via VPN, but that slows down my browing and video conferencing experience.
+I was trying to figure out a way to use VPN specifically for the server and let the other traffic move normally. That's when I came accross [this solution][1]. In this blog I'll explain the solution step by step.
 
-**At the end of this blog you'll be able to selective for which website or ip addresses you can route your vpn traffic through.**
+**At the end of this blog you'll be able to select which website or ip addresses you want to route through the VPN.**
 
 Requirements:
 
 - Ubuntu (Should work on other linux distros as well)
-- [Openfortivpn](https://github.com/adrienverge/openfortivpn)
+- [Openfortivpn][6]
+  - Ensure that you can connect to a VPN using it.
 
-If you are using windows, you can try it with Windows Subsystem for Linux. Do [ensure that you have WSL2](https://github.com/microsoft/WSL/issues/4201).
+If you are using windows, you can try it with Windows Subsystem for Linux. Do [ensure that you have WSL2][5] before proceeding.
 
 ## Steps for selective routing
 
 ### 1. VPN configuration file
 
-This file tells our vpn client the specifics of our VPN and to not allow anything through our VPN for now. We'll use a script in the next section to whitelist the specific websites.
+This file tells our vpn client the configuration of our VPN.
 
 Save the below config file as vpn-config.conf anywhere on your computer
 
-```
-host = vpn.iiitd.edu.in
-port = 10443
-username = <your username>
-password = <your pass>
-set-routes = 0
-set-dns = 0
-pppd-use-peerdns = 0
-```
+{% gist b443e20658cdf3e762a4e9df1a6e31bb vpn-config.conf %}
 
-Here is how my conf file looks like
-```
-host = vpn.iiitd.edu.in
-port = 10443
-username = <my username>
-password = <my pass>
-set-routes = 0
-set-dns = 0
-pppd-use-peerdns = 0
-# X509 certificate sha256 sum, trust only this one!
-trusted-cert = e46d4aff08ba6914e64daa85bc6112a422fa7ce16631bff0b592a28556f993db
-```
+`set-routes = 0` specifies to not make any routes through the VPN, now we will whitelist the websites to use through the VPN. 
 
 ### 2. Setup the PPP script
 
-**What's PPP?**: PPP is Point to Point protocol. Linux uses this protocol to communicate over TCP/IP through your Internet Provider.[read more](https://docstore.mik.ua/orelly/linux/run/ch15_02.htm)
+**What's PPP?**: PPP is Point to Point protocol. Linux uses this protocol to communicate over TCP/IP to your Internet Provider.[read more][3]
 
-**What's pppd?** The PPP Daemon (pppd) is a freely available implementation of the Point-to-Point Protocol (PPP) that runs on many Unix systems. [read more](docstore.mik.ua/orelly/networking_2ndEd/tcp/appa_02.htm)
+**What's pppd?** The PPP Daemon (pppd) is a freely available implementation of the Point-to-Point Protocol (PPP) that runs on many Unix systems. [read more][4]
 
 We are now going to write a script that will whitelist specific domains to pass through the VPN.
 
 Use the following commands to create the script
-```
+
+```bash
 sudo touch /etc/ppp/ip-up.d/fortivpn
 sudo chmod a+x /etc/ppp/ip-up.d/fortivpn
 ```
 
-**What's ip-up?** /etc/ppp/ip-up is a shell script executed by pppd when the link comes up. [read more](docstore.mik.ua/orelly/networking_2ndEd/tcp/appa_02.htm)
+**What's ip-up?** /etc/ppp/ip-up is a shell script executed by pppd when the link/internet comes up. [read more][4]
 
-Edit that script with your favourite editor, it shall look like:
-```
-#!/bin/bash
-#
-# Whitelist here all domains that need to go through openfortivpn
-# Domains are separated by a space
-#
-domains='example.com example.fr'
-ips='192.168.0.15'
+Edit the above script with your favourite editor, it shall look like:
 
-let resolved
-for domain in $domains; do
-    resolved=`dig +short $domain | tail -n1`
-    ips="$ips $resolved"
-done
-
-for ip in $ips; do
-    route add $ip dev ppp0
-done
-```
-
-Here is my ppp script
-```
-#!/bin/bash
-#
-# Whitelist here all domains that need to go through openfortivpn
-# Domains are separated by a space
-#
-ips='192.168.2.217 192.168.29.151'
-
-let resolved
-for domain in $domains; do
-  resolved=`dig +short $domain | tail -n1`
-  ips="$ips $resolved"
-done
-
-for ip in $ips; do
-  route add $ip dev ppp0
-done
-```
+{% gist b443e20658cdf3e762a4e9df1a6e31bb my-pppscript.sh %}
 
 ### 3. Run the VPN!
 
 The following command should connect you to your VPN now.
-```
+
+```bash
 sudo openfortivpn -c vpn-config.conf
 ```
-Below you can see the routes added for the ip addresses
-ppp0 is the vpn and enp2s0 is the ethernet.
-```
+
+Below you can see the routes added for the ip addresses. ppp0 is the vpn and enp2s0 is the ethernet.
+
+```bash
 rohan@rohan-laptop ~> route                                                                  (base) 
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
@@ -126,44 +74,63 @@ link-local      0.0.0.0         255.255.0.0     U     1000   0        0 enp2s0
 192.168.2.217   0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
 192.168.29.151  0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
 ```
+
 That's about it. You can now work on your server and enjoy fast internet along!
 
 Thanks for reading. If this did help you, feels free to like, comment and share this blog :)
 
 ### Bonus: Create a system service
-It quite irritating to have a terminal open when you have connected to a VPN. Thereforce I created a system service to automatically connect to VPN on boot.
+
+It quite irritating to have a terminal open every time to a VPN, especially when you work with it everyday. So I created a system service to automatically connect to VPN on boot :)
 
 Run these commands to setup the service
-```
+
+```bash
 sudo touch /etc/systemd/system/openfortivpn.service
 ```
+
 Open it with your favourite editor and enter this configuration
-<script src="https://gist.github.com/rohanrajpal/b443e20658cdf3e762a4e9df1a6e31bb.js"></script>
-```
-[Unit]
-Description = OpenFortiVPN
-After=network-online.target multi-user.target
-Documentation=man:openfortivpn(1)
 
-[Service]
-User=root
-Type=idle
-ExecStart = /usr/bin/openfortivpn -c <path to your config file>
-KillSignal=SIGTERM
-StandardOutput=file:<any-place-where you want to save your logs>
-Restart=always
-RestartSec=10
+{% gist b443e20658cdf3e762a4e9df1a6e31bb openfortivpn.service %}
 
-[Install]
-WantedBy=multi-user.target
+To start this service, simply run
+
+```bash
+sudo systemctl start openfortivpn
 ```
 
-Structure
-// why would someone need it
-// openfortivpn
-// steps
-// setup vpn
-// setup pppd
-// setup conf
-// run the command
-// bonus: create a system service
+To check if it is running
+```bash
+● openfortivpn.service - OpenFortiVPN
+   Loaded: loaded (/etc/systemd/system/openfortivpn.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2020-04-25 13:22:26 IST; 3h 43min ago
+     Docs: man:openfortivpn(1)
+ Main PID: 1851 (openfortivpn)
+    Tasks: 6 (limit: 4915)
+   CGroup: /system.slice/openfortivpn.service
+           ├─1851 /usr/bin/openfortivpn -c /home/rohan/Documents/vpn-configs/iiitd.conf
+           └─1852 /usr/sbin/pppd 38400 :1.1.1.1 noipdefault noaccomp noauth default-asyncmap nopcomp
+
+Apr 25 13:22:26 rohan-laptop systemd[1]: Started OpenFortiVPN.
+Apr 25 13:22:26 rohan-laptop pppd[1852]: pppd 2.4.7 started by root, uid 0
+Apr 25 13:22:26 rohan-laptop pppd[1852]: Using interface ppp0
+Apr 25 13:22:26 rohan-laptop pppd[1852]: Connect: ppp0 <--> /dev/pts/0
+Apr 25 13:22:27 rohan-laptop pppd[1852]: local  IP address 10.212.134.101
+Apr 25 13:22:27 rohan-laptop pppd[1852]: remote IP address 1.1.1.1
+```
+#### References
+
+1. <https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-437783005>
+2. <https://github.com/adrienverge/openfortivpn/wiki>
+3. <https://docstore.mik.ua/orelly/linux/run/ch15_02.htm>
+4. <https://docstore.mik.ua/orelly/networking_2ndEd/tcp/appa_02.htm>
+5. <https://github.com/microsoft/WSL/issues/4201#issuecomment-539034470>
+6. <https://github.com/adrienverge/openfortivpn>
+
+
+[1]: https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-437783005
+[2]: https://github.com/adrienverge/openfortivpn/wiki
+[3]: https://docstore.mik.ua/orelly/linux/run/ch15_02.htm
+[4]: docstore.mik.ua/orelly/networking_2ndEd/tcp/appa_02.htm
+[5]: https://github.com/microsoft/WSL/issues/4201#issuecomment-539034470
+[6]: https://github.com/adrienverge/openfortivpn
