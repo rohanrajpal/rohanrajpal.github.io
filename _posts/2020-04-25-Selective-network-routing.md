@@ -5,19 +5,18 @@ date:   2020-04-25 13:00:00 +0530
 categories: [WorkFromHome, VPN, Networking, Selective, Routing, Systemd]
 comments: true
 ---
+Everyone is working from home and for me it is remotely working on the servers in my college. I can only connect to them via VPN, but that slows down my browsing and video conferencing.  
 
-Everyone is working from home and for me it is remotely working on the servers in my college. I can only connect to them via VPN, but that slows down my browing and video conferencing experience.
-I was trying to figure out a way to use VPN specifically for the server and let the other traffic move normally. That's when I came accross [this solution][1]. In this blog I'll explain the solution step by step.
+I was trying to figure out a way to use VPN specifically for the server in college and let the other traffic move normally. That's when I came accross [this solution][1]. In this blog I'll explain the solution step by step.  
 
-**At the end of this blog you'll be able to select which website or ip addresses you want to route through the VPN.**
+tl,dr : **At the end of this blog you'll be able to select which website or ip addresses you want to route through the VPN.**
 
-Requirements:
+**Requirements:**
 
 - Ubuntu (Should work on other linux distros as well)
+  - If you are using windows, you can try it Windows Subsystem for Linux. Do [ensure that you have WSL2][5] before proceeding.
 - [Openfortivpn][6]
   - Ensure that you can connect to a VPN using it.
-
-If you are using windows, you can try it with Windows Subsystem for Linux. Do [ensure that you have WSL2][5] before proceeding.
 
 ## Steps for selective routing
 
@@ -35,8 +34,6 @@ Save the below config file as vpn-config.conf anywhere on your computer
 
 **What's PPP?**: PPP is Point to Point protocol. Linux uses this protocol to communicate over TCP/IP to your Internet Provider.[read more][3]
 
-**What's pppd?** The PPP Daemon (pppd) is a freely available implementation of the Point-to-Point Protocol (PPP) that runs on many Unix systems. [read more][4]
-
 We are now going to write a script that will whitelist specific domains to pass through the VPN.
 
 Use the following commands to create the script
@@ -46,11 +43,15 @@ sudo touch /etc/ppp/ip-up.d/fortivpn
 sudo chmod a+x /etc/ppp/ip-up.d/fortivpn
 ```
 
+**What's pppd?** The PPP Daemon (pppd) is a freely available implementation of the Point-to-Point Protocol (PPP) that runs on many Unix systems. [read more][4]
+
 **What's ip-up?** /etc/ppp/ip-up is a shell script executed by pppd when the link/internet comes up. [read more][4]
 
 Edit the above script with your favourite editor, it shall look like:
 
 {% gist b443e20658cdf3e762a4e9df1a6e31bb my-pppscript.sh %}
+
+Now add the ips and domains you want to access through the VPN. 
 
 ### 3. Run the VPN
 
@@ -60,7 +61,7 @@ The following command should connect you to your VPN now.
 sudo openfortivpn -c vpn-config.conf
 ```
 
-Below you can see the routes added for the ip addresses. ppp0 is the vpn and enp2s0 is the ethernet.
+Below you can see the routes added for the ip addresses. ppp0 is the vpn interface and enp2s0 is the ethernet.
 
 ```bash
 rohan@rohan-laptop ~> route                                                                  (base)
@@ -75,13 +76,11 @@ link-local      0.0.0.0         255.255.0.0     U     1000   0        0 enp2s0
 192.168.29.151  0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
 ```
 
-That's about it. You can now work on your server and enjoy fast internet along!
+**That's about it!** You can now work on your server and enjoy fast internet along :)
 
-Thanks for reading. If this did help you, feels free to like, comment and share this blog :)
+### Bonus: Automatically start VPN on boot
 
-### Bonus: Create a system service
-
-It quite irritating to have a terminal open every time to a VPN, especially when you work with it everyday. So I created a system service to automatically connect to VPN on boot :)
+It's quite irritating to log into the VPN everytime before starting work. So I created a system service to automatically connect to VPN on boot.
 
 Run these commands to setup the service
 
@@ -120,6 +119,8 @@ Apr 25 13:22:26 rohan-laptop pppd[1852]: Connect: ppp0 <--> /dev/pts/0
 Apr 25 13:22:27 rohan-laptop pppd[1852]: local  IP address 10.212.134.101
 Apr 25 13:22:27 rohan-laptop pppd[1852]: remote IP address 1.1.1.1
 ```
+
+Thanks for reading :) If this did help you, feels free to like, comment and share this blog.
 
 #### References
 
