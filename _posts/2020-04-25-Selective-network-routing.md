@@ -88,7 +88,7 @@ Run these commands to setup the service
 sudo touch /etc/systemd/system/openfortivpn.service
 ```
 
-Open it with your favourite editor and enter this configuration
+Open it with your favourite editor and enter this configuration. Thanks to [DimitriPapadopoulos](https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-620720265) for helping me with it.
 
 {% gist b443e20658cdf3e762a4e9df1a6e31bb openfortivpn.service %}
 
