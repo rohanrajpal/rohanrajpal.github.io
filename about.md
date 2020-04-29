@@ -5,7 +5,7 @@ permalink: /about/
 ---
 ![dpmain](/images/about/dp.jpg){: .dp}
 
-I'm a third-year student CSE student at [IIITD](https://www.iiitd.ac.in/) and a Google Summer of Code [student](https://summerofcode.withgoogle.com/archive/2019/projects/6144888880496640/) under [VideoLAN](https://www.videolan.org/index.html).
+I'm a third-year student CSE student at [IIITD](https://www.iiitd.ac.in/), a Google Summer of Code 2019 [student](https://summerofcode.withgoogle.com/archive/2019/projects/6144888880496640/) under [VideoLAN](https://www.videolan.org/index.html) and an incoming intern at Expedia for Summer 2020.
 
 Here is my [Resume](https://rohanrajpal.github.io/resume/Rohan_Resume.pdf).
 
@@ -31,7 +31,8 @@ Some of my coursework projects include:
 
 - Implementing the Go-Back-N protocol in Python
 - [Simulating a computer network](https://github.com/rohanrajpal/ns3_assignments) using ns-3 and evaluate its performance in C++
-- Find patterns in shallow clouds using satellite imagery via deep learning techniques using Pytorch
+- Find [diseases in crops](https://zindi.africa/competitions/iclr-workshop-challenge-1-cgiar-computer-vision-for-crop-disease) using computer vision and deep learning techniques (Pytorch,Fastai).
+- Find patterns in shallow clouds using satellite imagery using deep learning techniques (Pytorch,Fastai).
 - Implementing [demand paging](https://github.com/rohanrajpal/CSE231-OS-Xv6-Assignment) in Xv6 in C
 - Implementing [priority scheduling](https://github.com/rohanrajpal/CSE231-OS-Pintos) in Pintos in C
 - Implement a [custom Linux shell](https://github.com/rohanrajpal/CSE231-OS-Shell-Assignment) using C
