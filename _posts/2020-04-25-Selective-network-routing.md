@@ -95,6 +95,7 @@ Open it with your favourite editor and enter this configuration. Thanks to [Dimi
 To start this service, simply run
 
 ```bash
+sudo systemctl enable openfortivpn
 sudo systemctl start openfortivpn
 ```
 
