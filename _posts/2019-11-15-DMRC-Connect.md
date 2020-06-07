@@ -2,7 +2,6 @@
 layout: post
 title:  "DMRC Connect"
 date:   2019-11-15 16:00:00 +0530
-categories: [Android, Design]
 comments: true
 ---
 

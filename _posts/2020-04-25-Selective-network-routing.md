@@ -1,20 +1,19 @@
 ---
 layout: post
-title:  "Selective network routing via VPN"
+title:  "Selective network routing/Split Tunneling via VPN"
 date:   2020-04-25 13:00:00 +0530
-categories: [WorkFromHome, VPN, Networking, Selective, Routing, Systemd]
 comments: true
 ---
-Everyone is working from home and for me it is remotely working on the servers in my college. I can only connect to them via VPN, but that slows down my browsing and video conferencing.  
+Everyone is working from home and for me it is remotely working on the servers in my college. I can only connect to them via a VPN, but that slows down my browsing and video conferencing.  
 
-I was trying to figure out a way to use VPN specifically for the server in college and let the other traffic move normally. That's when I came accross [this solution][1]. In this blog I'll explain the solution step by step.  
+I was trying to figure out a way to use VPN specifically for the server in college and let the other traffic move normally. That's when I came across [this solution][1]. In this blog I'll explain the solution step by step.  
 
-tl,dr : **At the end of this blog you'll be able to select which website or ip addresses you want to route through the VPN.**
+tl,dr : **At the end of this blog you'll be able to select which website or IP addresses you want to route through the VPN.**
 
 **Requirements:**
 
-- Ubuntu (Should work on other linux distros as well)
-  - If you are using windows, you can try it Windows Subsystem for Linux. Do [ensure that you have WSL2][5] before proceeding.
+- Ubuntu (Should work on other Linux distros as well)
+  - If you are using windows, this method works with Windows Subsystem for Linux. Do [ensure that you have WSL2][5] before proceeding.
 - [Openfortivpn][6]
   - Ensure that you can connect to a VPN using it.
 
@@ -22,7 +21,7 @@ tl,dr : **At the end of this blog you'll be able to select which website or ip a
 
 ### 1. VPN configuration file
 
-This file tells our vpn client the configuration of our VPN.
+This file tells our VPN client the configuration of our VPN.
 
 Save the below config file as vpn-config.conf anywhere on your computer
 
@@ -81,6 +80,7 @@ link-local      0.0.0.0         255.255.0.0     U     1000   0        0 enp2s0
 ### Bonus: Automatically start VPN on boot
 
 It's quite irritating to log into the VPN everytime before starting work. So I created a system service to automatically connect to VPN on boot.
+*Disclaimer:* this will not work with WSL2
 
 Run these commands to setup the service
 
@@ -88,7 +88,7 @@ Run these commands to setup the service
 sudo touch /etc/systemd/system/openfortivpn.service
 ```
 
-Open it with your favourite editor and enter this configuration. Thanks to [DimitriPapadopoulos](https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-620720265) for helping me with it.
+Open it with your favorite editor and enter this configuration. Thanks to [DimitriPapadopoulos](https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-620720265) for helping me with it.
 
 {% gist b443e20658cdf3e762a4e9df1a6e31bb openfortivpn.service %}
 
