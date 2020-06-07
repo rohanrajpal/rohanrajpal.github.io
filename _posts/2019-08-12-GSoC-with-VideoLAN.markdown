@@ -8,7 +8,7 @@ driveId: 1HChkHipXaNVgkkA8ZMF5IMyHLtQv3N20/preview
 ---
 ## Introduction ![videolan](/images/videoLANLogo.png)
 This summer, I participated as a [Google Summer of Code](https://summerofcode.withgoogle.com/) student under VideoLAN. GSoC is undoubtedly one of the best summer programs out there. From designing interfaces and interactions to writing production-level code, I've learned tons of exciting stuff!  
-I was blessed to have great mentors and learned a lot about the open source community.  
+I was blessed to have great mentors and learned a lot about the open-source community.  
 
 ### Project and Proposal
 
@@ -34,7 +34,7 @@ A big thanks to the team and my mentors who helped me with my endless doubts!
 * [Alexandre Janniaux](https://code.videolan.org/alexandre-janniaux) (Software engineer at Videolabs)
 * [Rohan Rajpal](https://code.videolan.org/rohanrajpal) (Me)
 
-Our communitcation was mainly via emails and #vlc-gsoc on IRC.
+Our communication was mainly via emails and #vlc-gsoc on IRC.
 
 ## The Project
 
@@ -81,7 +81,7 @@ I have also worked on a few other things
 
 ### What's left to do?
 
-Although I completed every task I was assigned, below mentioned tasks are best suited as a follow-up for my work done:
+Although I completed every task I was assigned, below-mentioned tasks are best suited as a follow-up for my work done:
 
  1. If too many widgets come on one side the center buttons don't remain in the center anymore. This has to be fixed.  
  2. The design of the Teletext and a few other widgets isn't final and work needs to be done.   
@@ -123,7 +123,7 @@ I also had to add functionalities like move, insert and delete to the model, bec
 Have a look at some of the actions below:  
 ![](/images/DNDDemo.gif)
 
-Next task was to code the cancel and close buttons. The player controlbar should only be updated when the user presses the close button. To implement this, I used signals.  
+The next task was to code the cancel and close buttons. The player controlbar should only be updated when the user presses the close button. To implement this, I used signals.  
 
 When you press the close button, the toolbarConfUpdated signal emits, and the playerControlBar is updated.  
 
@@ -166,10 +166,10 @@ The picture below shows the division.
 	 - Avoid writing [over-engineered](https://www.youtube.com/watch?v=-AQfQFcXac8) code
 	 - How to work on a huge codebase. Things like Memory leaks, ram consumption, learned how to use the VLC Core API.
 	 - Design patterns like the [D-pointer strategy](https://wiki.qt.io/D-Pointer)  and [Model View Delegate](https://doc.qt.io/qt-5/qtquick-modelviewsdata-modelview.html).
-	 - Qt/C++, QML and writing production level code in them.
+	 - Qt/C++, QML and writing production-level code in them.
 	 - QtCreator, one of the best IDEs I've used.
  - Design
-	 - Learned design concepts like form follows flow.
+	 - Learned design concepts like form follows the flow.
 	 - Prototyping, brainstorming on interactions.
 	 - Clipping
 	 - Thinking design solutions keeping the code in mind.
