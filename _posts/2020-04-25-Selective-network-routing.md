@@ -124,13 +124,9 @@ Apr 25 13:22:27 rohan-laptop pppd[1852]: remote IP address 1.1.1.1
 Thanks for reading :) If this did help you, feels free to like, comment and share this blog.
 
 #### References
-
-1. <https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-437783005>
-2. <https://github.com/adrienverge/openfortivpn/wiki>
-3. <https://docstore.mik.ua/orelly/linux/run/ch15_02.htm>
-4. <https://docstore.mik.ua/orelly/networking_2ndEd/tcp/appa_02.htm>
-5. <https://github.com/microsoft/WSL/issues/4201#issuecomment-539034470>
-6. <https://github.com/adrienverge/openfortivpn>
+- [openfortivpn](https://github.com/adrienverge/openfortivpn/wiki)
+- [ppp](https://docstore.mik.ua/orelly/linux/run/ch15_02.htm)
+- [ppp daemon](https://docstore.mik.ua/orelly/networking_2ndEd/tcp/appa_02.htm)
 
 [1]: https://github.com/adrienverge/openfortivpn/issues/371#issuecomment-437783005
 [2]: https://github.com/adrienverge/openfortivpn/wiki
