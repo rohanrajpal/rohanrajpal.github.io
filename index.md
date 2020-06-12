@@ -4,3 +4,8 @@
 
 layout: home
 ---
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Redirecting to https://rohanrajpal.github.io/blog</title>
+<meta http-equiv="refresh" content="0; URL=https://rohanrajpal.github.io/blog">
+<link rel="canonical" href="https://rohanrajpal.github.io/blog">
