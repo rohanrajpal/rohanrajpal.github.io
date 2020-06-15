@@ -3,6 +3,12 @@ layout: page
 title: About
 permalink: /about/
 ---
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Redirecting to https://rohanrajpal.github.io/blog</title>
+<meta http-equiv="refresh" content="0; URL=https://rohanrajpal.github.io/blog/about">
+<link rel="canonical" href="https://rohanrajpal.github.io/blog/about">
+
 ![dpmain](/images/about/dp.jpg){: .dp}
 
 I'm a third-year student CSE student at [IIITD](https://www.iiitd.ac.in/), a Google Summer of Code 2019 [student](https://summerofcode.withgoogle.com/archive/2019/projects/6144888880496640/) under [VideoLAN](https://www.videolan.org/index.html) and an incoming intern at Expedia for Summer 2020.
