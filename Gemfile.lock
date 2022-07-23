@@ -72,9 +72,9 @@ GEM
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
     thread_safe (0.3.6)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2020.1)
+    tzinfo-data (1.2022.1)
       tzinfo (>= 1.0.0)
     wdm (0.1.1)
 
@@ -87,7 +87,7 @@ DEPENDENCIES
   jekyll-feed (~> 0.6)
   jekyll-gist
   minima (~> 2.0)
-  tzinfo (~> 1.2)
+  tzinfo (~> 1.2, >= 1.2.10)
   tzinfo-data
   wdm (~> 0.1.0)
 
